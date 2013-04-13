@@ -1,6 +1,7 @@
 var QUNIT = true;
 $(function(){
     var context = DataGuise
+      , parse
     ;
     module("Public API");
 
@@ -22,5 +23,20 @@ $(function(){
 
         test("DataGuise has defaultTranslators", function () {
             equal(typeof context.defaultTranslators, "object");
+        });
+
+    module("Compiled parser");
+
+        test("must format data", function () {
+            parse = context.compile("0-0");
+            equal(parse(""), "");
+            equal(parse("1"), "1");
+            equal(parse("12"), "1-2");
+            equal(parse("1-"), "1-");
+            equal(parse("1-2"), "1-2");
+            equal(parse("123"), "1-2");
+            equal(parse("1."), "1-");
+            equal(parse("1.-"), "1-");
+            equal(parse("1.."), "1-");
         });
 });
