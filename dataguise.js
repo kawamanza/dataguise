@@ -35,17 +35,15 @@
         translators = new Translators();
         narrow = function (value) {
             if (typeof value !== "string") return;
-            var maskChars = mask.split("")
-              , valueChars = value.split("")
-              , valueChar
-              , i = 0, mLen = maskChars.length
-              , j = 0, vLen = valueChars.length
-              , buf = []
+            var valueChar
               , maskChar, translator
+              , i = 0, mLen = mask.length
+              , j = 0, vLen = value.length
+              , buf = []
             ;
             while (i < mLen && j < vLen) {
-                maskChar = maskChars[i];
-                valueChar = valueChars[j];
+                maskChar = mask.charAt(i);
+                valueChar = value.charAt(j);
                 translator = translators[maskChar];
                 if (translator) {
                     if (translator.accept(valueChar)) {
