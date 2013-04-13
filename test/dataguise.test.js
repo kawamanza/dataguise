@@ -19,4 +19,8 @@ $(function(){
         test("Parser owns property mask", function () {
             equal(typeof context.compile("0").mask, "string");
         });
+
+        test("DataGuise has defaultTranslators", function () {
+            equal(typeof context.defaultTranslators, "object");
+        });
 });
