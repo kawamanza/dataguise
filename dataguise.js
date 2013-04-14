@@ -14,7 +14,8 @@
         return target;
     }
 
-    function REParser(re) {
+    function REParser(re, options) {
+        extend(this, options);
         extend(this, {
             "accept": function (character) {
                 return re.test(character);
@@ -26,6 +27,7 @@
     }
     DataGuise.defaultTranslators = extend(Translators.prototype, {
         "0": new REParser(/[0-9]/)
+      , "9": new REParser(/[0-9]/, {"optional": true})
     });
 
     function compile(mask, options) {
@@ -67,6 +69,9 @@
                     if (translator.accept(valueChar)) {
                         buf[concatMethod](valueChar);
                         i += offset;
+                    } else if (translator.optional) {
+                        i += offset;
+                        j -= offset;
                     }
                     j += offset;
                 } else {

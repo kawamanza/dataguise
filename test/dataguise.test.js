@@ -40,6 +40,25 @@ $(function(){
             equal(parse("1.."), "1-");
         });
 
+        test("must format data from left to right with optional characters while typing", function () {
+            parse = context.compile("099.099.099.099");
+            equal(parse(""), "");
+            equal(parse("4"), "4");
+            equal(parse("4."), "4.");
+            equal(parse("4.."), "4.");
+            equal(parse("4.3"), "4.3");
+            equal(parse("4.32"), "4.32");
+            equal(parse("4.32."), "4.32.");
+            equal(parse("4.32.1"), "4.32.1");
+            equal(parse("4.32.12"), "4.32.12");
+            equal(parse("4.32.125"), "4.32.125");
+            equal(parse("4.32.1256"), "4.32.125.6");
+            equal(parse("4.32.125.67"), "4.32.125.67");
+            equal(parse("4.32.125.678"), "4.32.125.678");
+            equal(parse("4.32.125.6789"), "4.32.125.678");
+            equal(parse("4.32.125.678."), "4.32.125.678");
+        });
+
         test("must format data from right to left while typing", function () {
             parse = context.compile("000.000.000/0000-00", {"reverse": true});
             equal(parse(""), "");
