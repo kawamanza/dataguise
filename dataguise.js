@@ -28,11 +28,13 @@
         "0": new REParser(/[0-9]/)
     });
 
-    function compile(mask) {
+    function compile(mask, options) {
         var narrow
           , translators
         ;
-        translators = new Translators();
+        options = extend({
+        }, options);
+        translators = extend(new Translators, options.translations);
         narrow = function (value) {
             if (typeof value !== "string") return;
             var valueChar
@@ -40,23 +42,39 @@
               , i = 0, mLen = mask.length
               , j = 0, vLen = value.length
               , buf = []
+              , concatMethod = "push"
+              , offset = 1
+              , check
             ;
-            while (i < mLen && j < vLen) {
+            if (options.reverse) {
+                concatMethod = "unshift";
+                offset = -1;
+                i = mLen - 1;
+                j = vLen - 1;
+                check = function () {
+                    return i > -1 && j > -1;
+                };
+            } else {
+                check = function () {
+                    return i < mLen && j < vLen
+                };
+            }
+            while (check()) {
                 maskChar = mask.charAt(i);
                 valueChar = value.charAt(j);
                 translator = translators[maskChar];
                 if (translator) {
                     if (translator.accept(valueChar)) {
-                        buf.push(valueChar);
-                        i += 1;
+                        buf[concatMethod](valueChar);
+                        i += offset;
                     }
-                    j += 1;
+                    j += offset;
                 } else {
-                    buf.push(maskChar);
+                    buf[concatMethod](maskChar);
                     if (valueChar == maskChar) {
-                        j += 1;
+                        j += offset;
                     }
-                    i += 1;
+                    i += offset;
                 }
             }
             return buf.join("");
