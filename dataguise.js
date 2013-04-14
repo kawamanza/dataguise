@@ -35,6 +35,7 @@
         var narrow
           , translators
         ;
+        if (typeof mask !== "string") return;
         options = extend({
         }, options);
         translators = extend(new Translators, options.translations);
