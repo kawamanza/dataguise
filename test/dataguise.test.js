@@ -79,4 +79,42 @@ $(function(){
             equal(parse("00.110.918/4000-438"), "001.109.184/0004-38");
             equal(parse("001.109.184/0004-3"), "00.110.918/4000-43");
         });
+
+        test("must format data from left to right with recursive mask while typing", function () {
+            parse = context.compile("0#.#");
+            equal(parse(""), "");
+            equal(parse("1"), "1");
+            equal(parse("12"), "12");
+            equal(parse("12."), "12.");
+            equal(parse("12.3"), "12.3");
+            equal(parse("12.34"), "12.34");
+            equal(parse("12.345"), "12.34.5");
+            equal(parse("12.34.5."), "12.34.5");
+            equal(parse("12.34.56"), "12.34.56");
+            equal(parse("12.34.567"), "12.34.56.7");
+            equal(parse("12.34.56."), "12.34.56.");
+            equal(parse("12.34.56"), "12.34.56");
+            equal(parse("12.34.5"), "12.34.5");
+        });
+
+        test("must format data from right to left with recursive mask while typing", function () {
+            parse = context.compile("#.##0,00", {"reverse": true});
+            equal(parse(""), "");
+            equal(parse("1"), "1");
+            equal(parse("12"), "12");
+            equal(parse("123"), "1,23");
+            equal(parse("1,234"), "12,34");
+            equal(parse("12,345"), "123,45");
+            equal(parse("123,456"), "1.234,56");
+            equal(parse("1.234,567"), "12.345,67");
+            equal(parse("12.345,678"), "123.456,78");
+            equal(parse("123.456,789"), "1.234.567,89");
+            equal(parse("1.234.567,890"), "12.345.678,90");
+            equal(parse("12.345.678,901"), "123.456.789,01");
+            equal(parse("123.456.789,012"), "1.234.567.890,12");
+            equal(parse("1.234.567.890,1"), "123.456.789,01");
+            equal(parse("123.456.789,0"), "12.345.678,90");
+            equal(parse("12.345.678,9"), "1.234.567,89");
+            equal(parse("1.234.567,8"), "123.456,78");
+        });
 });

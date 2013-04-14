@@ -28,6 +28,7 @@
     DataGuise.defaultTranslators = extend(Translators.prototype, {
         "0": new REParser(/[0-9]/)
       , "9": new REParser(/[0-9]/, {"optional": true})
+      , "#": new REParser(/[0-9]/, {"recursive": true})
     });
 
     function compile(mask, options) {
@@ -44,6 +45,8 @@
               , i = 0, mLen = mask.length
               , j = 0, vLen = value.length
               , buf = []
+              , resetPos = -1
+              , lastMaskChar
               , concatMethod = "push"
               , offset = 1
               , check
@@ -52,11 +55,13 @@
                 concatMethod = "unshift";
                 offset = -1;
                 i = mLen - 1;
+                lastMaskChar = 0;
                 j = vLen - 1;
                 check = function () {
                     return i > -1 && j > -1;
                 };
             } else {
+                lastMaskChar = mLen - 1;
                 check = function () {
                     return i < mLen && j < vLen
                 };
@@ -68,6 +73,13 @@
                 if (translator) {
                     if (translator.accept(valueChar)) {
                         buf[concatMethod](valueChar);
+                        if (translator.recursive) {
+                            if ( resetPos == -1) {
+                                resetPos = i;
+                            } else if (i == lastMaskChar) {
+                                i = resetPos - offset;
+                            }
+                        }
                         i += offset;
                     } else if (translator.optional) {
                         i += offset;
