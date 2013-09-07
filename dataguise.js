@@ -80,6 +80,7 @@
                             } else if (i == lastMaskChar) {
                                 i = resetPos - offset;
                             }
+                            if (lastMaskChar == resetPos) i -= offset;
                         }
                         i += offset;
                     } else if (translator.optional) {

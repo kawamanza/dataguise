@@ -97,6 +97,27 @@ $(function(){
             equal(parse("12.34.5"), "12.34.5");
         });
 
+        test("must format data from left to right with recursive mask", function () {
+            parse = context.compile("0#");
+            equal(parse(""), "");
+            equal(parse("a"), "");
+            equal(parse("1"), "1");
+            equal(parse("1a"), "1");
+            equal(parse("12"), "12");
+            equal(parse("1a2"), "12");
+            equal(parse("12a"), "12");
+            equal(parse("12ab"), "12");
+            equal(parse("12ab3"), "123");
+            equal(parse("123"), "123");
+            equal(parse("1a23"), "123");
+            equal(parse("1a2b3"), "123");
+            equal(parse("123a"), "123");
+            equal(parse("1234"), "1234");
+            equal(parse("1a234"), "1234");
+            equal(parse("1a2b34"), "1234");
+            equal(parse("1a2b3c4"), "1234");
+        });
+
         test("must format data from right to left with recursive mask while typing", function () {
             parse = context.compile("#.##0,00", {"reverse": true});
             equal(parse(""), "");
@@ -116,5 +137,17 @@ $(function(){
             equal(parse("123.456.789,0"), "12.345.678,90");
             equal(parse("12.345.678,9"), "1.234.567,89");
             equal(parse("1.234.567,8"), "123.456,78");
+        });
+
+        test("must format data from right to left with recursive mask", function () {
+            parse = context.compile("#0", {"reverse": true});
+            equal(parse(""), "");
+            equal(parse("a"), "");
+            equal(parse("1"), "1");
+            equal(parse("1a"), "1");
+            equal(parse("12"), "12");
+            equal(parse("1a2"), "12");
+            equal(parse("1a2b"), "12");
+            equal(parse("1a2b3"), "123");
         });
 });
