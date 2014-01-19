@@ -26,7 +26,7 @@
     function Translators() {
     }
     DataGuise.defaultTranslators = extend(Translators.prototype, {
-        "0": new REParser(/[0-9]/)
+        "0": new REParser(/[0-9]/, {"default": "0"})
       , "9": new REParser(/[0-9]/, {"optional": true})
       , "#": new REParser(/[0-9]/, {"recursive": true})
     });
