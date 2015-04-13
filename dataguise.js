@@ -64,7 +64,7 @@
             } else {
                 lastMaskChar = mLen - 1;
                 check = function () {
-                    return i < mLen && j < vLen
+                    return i < mLen && j < vLen;
                 };
             }
             while (check()) {
