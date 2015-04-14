@@ -140,20 +140,31 @@ $(function(){
         });
 
         test("must format data from right to left with recursive mask while typing (using defaults to fit)", function () {
-            parse = context.compile("#.##0,00", {"reverse": true, "fit": true});
+            var suppressZeroLeft = function (value) {
+                if (value === "0,0") return "";
+                return value.replace(/^[^1-9]+(?!$)/, '');
+            };
+            parse = context.compile("#.##0,00", {"reverse": true, "fit": true, onStart: suppressZeroLeft});
             equal(parse(""), "");
+            equal(parse("0"), "0,00");
             equal(parse("1"), "0,01");
             equal(parse("0,012"), "0,12");
             equal(parse("0,123"), "1,23");
             equal(parse("1,234"), "12,34");
             equal(parse("12,345"), "123,45");
             equal(parse("123,456"), "1.234,56");
+            equal(parse("1.234,567"), "12.345,67");
+            equal(parse("12.345,678"), "123.456,78");
+            equal(parse("123.456,789"), "1.234.567,89");
+            equal(parse("1.234.567,8"), "123.456,78");
+            equal(parse("123.456,7"), "12.345,67");
+            equal(parse("12.345,6"), "1.234,56");
             equal(parse("1.234,5"), "123,45");
             equal(parse("123,4"), "12,34");
             equal(parse("12,3"), "1,23");
             equal(parse("1,2"), "0,12");
             equal(parse("0,1"), "0,01");
-            equal(parse("0,0"), "0,00");
+            equal(parse("0,0"), "");
         });
 
         test("must format data from right to left with recursive mask", function () {
