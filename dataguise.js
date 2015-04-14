@@ -26,7 +26,7 @@
     function Translators() {
     }
     DataGuise.defaultTranslators = extend(Translators.prototype, {
-        "0": new REParser(/[0-9]/)
+        "0": new REParser(/[0-9]/, {"default": "0"})
       , "9": new REParser(/[0-9]/, {"optional": true})
       , "#": new REParser(/[0-9]/, {"recursive": true})
     });
@@ -41,6 +41,12 @@
         translators = extend(new Translators, options.translations);
         narrow = function (value) {
             if (typeof value !== "string") return;
+            if (typeof options.onStart === "function") {
+                var _value = options.onStart(value);
+                if (typeof _value === "string") {
+                    value = _value;
+                }
+            }
             var valueChar
               , maskChar, translator
               , i = 0, mLen = mask.length
@@ -67,6 +73,29 @@
                     return i < mLen && j < vLen;
                 };
             }
+            if (options.fit && vLen > 0) {
+                check = (function (origCheck) {
+                    return function () {
+                        if (origCheck()) {
+                            return true;
+                        }
+                        if (i > -1 && i < mLen) {
+                            translator = translators[mask.charAt(i)]
+                            if (translator) {
+                                if (translator["default"]) {
+                                    buf[concatMethod](translator["default"]);
+                                    i += offset;
+                                    return true;
+                                }
+                            } else if (i > 0 && i < mLen - 1 && translators[mask.charAt(i+offset)]["default"]) {
+                                buf[concatMethod](mask.charAt(i))
+                                i += offset;
+                                return true;
+                            }
+                        }
+                    };
+                })(check);
+            }   // */
             while (check()) {
                 maskChar = mask.charAt(i);
                 valueChar = value.charAt(j);
