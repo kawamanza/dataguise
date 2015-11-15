@@ -1,0 +1,27 @@
+{
+  "name": "dataguise",
+  "version": "0.0.1",
+  "description": "A simple data formatter",
+  "main": "dataguise.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt test --verbose --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kawamanza/dataguise.git"
+  },
+  "keywords": [
+    "input",
+    "mask",
+    "formatter"
+  ],
+  "author": "Marcelo Manzan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kawamanza/dataguise/issues"
+  },
+  "homepage": "https://github.com/kawamanza/dataguise#readme"
+}
