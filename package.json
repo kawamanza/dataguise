@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "grunt test --verbose --force"
+    "test": "node_modules/.bin/grunt test --verbose --force"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/kawamanza/dataguise#readme",
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-qunit": "^0.7.0"
   }
 }
