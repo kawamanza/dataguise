@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node_modules/.bin/grunt test --verbose --force"
+    "test": "node_modules/.bin/grunt test --verbose --force",
+    "coverage": "node_modules/.bin/grunt coverage --verbose --force"
   },
   "repository": {
     "type": "git",

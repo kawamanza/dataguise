@@ -19,6 +19,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-coveralls'
   grunt.loadNpmTasks 'grunt-qunit-istanbul'
 
-  grunt.registerTask 'test', ['qunit', 'coveralls']
+  grunt.registerTask 'test', ['qunit']
+  grunt.registerTask 'coverage', ['qunit', 'coveralls']
 
   return
