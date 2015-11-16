@@ -5,4 +5,7 @@ DataGuise
 [![Coverage Status](https://coveralls.io/repos/kawamanza/dataguise/badge.svg?branch=master&service=github)](https://coveralls.io/github/kawamanza/dataguise?branch=master)
 [![Code Climate](https://codeclimate.com/github/kawamanza/dataguise.png)](https://codeclimate.com/github/kawamanza/dataguise)
 
+
+[![devDependency Status](https://david-dm.org/kawamanza/dataguise/dev-status.svg)](https://david-dm.org/kawamanza/dataguise#info=devDependencies)
+
 A simple data formatter
