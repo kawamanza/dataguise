@@ -40,13 +40,13 @@
         }, options);
         translators = extend(new Translators, options.translations);
         narrow = function (value) {
-            if (typeof value !== "string") return;
             if (typeof options.onStart === "function") {
                 var _value = options.onStart(value);
                 if (typeof _value === "string") {
                     value = _value;
                 }
             }
+            if (typeof value !== "string") return;
             var valueChar
               , maskChar, translator
               , i = 0, mLen = mask.length

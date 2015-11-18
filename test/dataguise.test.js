@@ -25,6 +25,19 @@ $(function(){
             equal(typeof context.defaultTranslators, "object");
         });
 
+        test("DataGuise ignore non-string parameter", function () {
+            var parser = context.compile("0");
+            strictEqual(parser(0), void(0), "Should return undefined for non-string parameters");
+        });
+
+        test("DataGuise handle non-string parameter", function () {
+            var grantAnyInput = function (value) {
+                return (typeof value === "string" ? value : String(value));
+            }
+            var parser = context.compile("0", {onStart: grantAnyInput});
+            strictEqual(parser(0), "0");
+        });
+
     module("Compiled parser");
 
         test("must format data", function () {
