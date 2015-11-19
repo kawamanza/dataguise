@@ -10,6 +10,7 @@ Code badges:
 [![Dependency Status](https://david-dm.org/kawamanza/dataguise.svg)](https://david-dm.org/kawamanza/dataguise)
 
 Project badges:
+[![NodeJS Version](https://badge.fury.io/js/dataguise.svg)](http://badge.fury.io/js/dataguise)
 [![GitHub version](https://badge.fury.io/gh/kawamanza%2Fdataguise.svg)](http://badge.fury.io/gh/kawamanza%2Fdataguise)
 [![devDependency Status](https://david-dm.org/kawamanza/dataguise/dev-status.svg)](https://david-dm.org/kawamanza/dataguise#info=devDependencies)
 
