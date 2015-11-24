@@ -1,7 +1,5 @@
-;(function () {
-    var window = this
-      , DataGuise
-    ;
+;(function (window) {
+    var DataGuise;
     DataGuise = window.DataGuise = {
         "compile": compile
     };
@@ -130,4 +128,4 @@
         narrow.mask = mask;
         return narrow;
     }
-}).call(this);
+})(this);
