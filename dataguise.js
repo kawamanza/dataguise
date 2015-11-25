@@ -1,6 +1,14 @@
-;(function (window) {
+;(function (factory){
+    if (typeof define === 'function' && define.amd) {
+        define([], factory);
+    } else if (typeof exports === 'object') {
+        module.exports = factory();
+    } else {
+        this.DataGuise = factory();
+    }
+}(function () {
     var DataGuise;
-    DataGuise = window.DataGuise = {
+    DataGuise = {
         "compile": compile
     };
 
@@ -128,4 +136,5 @@
         narrow.mask = mask;
         return narrow;
     }
-})(this);
+    return DataGuise;
+}));
