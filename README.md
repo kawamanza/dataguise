@@ -14,6 +14,8 @@ Project badges:
 [![GitHub version](https://badge.fury.io/gh/kawamanza%2Fdataguise.svg)](http://badge.fury.io/gh/kawamanza%2Fdataguise)
 [![devDependency Status](https://david-dm.org/kawamanza/dataguise/dev-status.svg)](https://david-dm.org/kawamanza/dataguise#info=devDependencies)
 
+[![NPM](https://nodei.co/npm/dataguise.png?downloads=true&downloadRank=true&stars=true)](https://npmjs.org/package/dataguise)
+
 Usage
 =====
 
