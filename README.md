@@ -7,6 +7,7 @@ Code badges:
 [![Build Status](https://travis-ci.org/kawamanza/dataguise.svg?branch=master)](https://travis-ci.org/kawamanza/dataguise)
 [![Coverage Status](https://coveralls.io/repos/kawamanza/dataguise/badge.svg?branch=master&service=github)](https://coveralls.io/github/kawamanza/dataguise?branch=master)
 [![Code Climate](https://codeclimate.com/github/kawamanza/dataguise.png)](https://codeclimate.com/github/kawamanza/dataguise)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/4bb786e81f4d47a98b32ea83d4642b67)](https://www.codacy.com/app/manzan/dataguise)
 [![bitHound Code](https://www.bithound.io/github/kawamanza/dataguise/badges/code.svg)](https://www.bithound.io/github/kawamanza/dataguise)
 [![bitHound Dependencies](https://www.bithound.io/github/kawamanza/dataguise/badges/dependencies.svg)](https://www.bithound.io/github/kawamanza/dataguise/master/dependencies/npm)
 [![Dependency Status](https://david-dm.org/kawamanza/dataguise.svg)](https://david-dm.org/kawamanza/dataguise)
