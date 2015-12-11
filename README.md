@@ -3,7 +3,7 @@ DataGuise
 
 A simple data formatter.
 
-Code badges:
+Code badges:  
 [![Build Status](https://travis-ci.org/kawamanza/dataguise.svg?branch=master)](https://travis-ci.org/kawamanza/dataguise)
 [![Coverage Status](https://coveralls.io/repos/kawamanza/dataguise/badge.svg?branch=master&service=github)](https://coveralls.io/github/kawamanza/dataguise?branch=master)
 [![Code Climate](https://codeclimate.com/github/kawamanza/dataguise.png)](https://codeclimate.com/github/kawamanza/dataguise)
@@ -12,7 +12,7 @@ Code badges:
 [![bitHound Dependencies](https://www.bithound.io/github/kawamanza/dataguise/badges/dependencies.svg)](https://www.bithound.io/github/kawamanza/dataguise/master/dependencies/npm)
 [![Dependency Status](https://david-dm.org/kawamanza/dataguise.svg)](https://david-dm.org/kawamanza/dataguise)
 
-Project badges:
+Project badges:  
 [![NodeJS Version](https://badge.fury.io/js/dataguise.svg)](http://badge.fury.io/js/dataguise)
 [![GitHub version](https://badge.fury.io/gh/kawamanza%2Fdataguise.svg)](http://badge.fury.io/gh/kawamanza%2Fdataguise)
 [![bitHound Overalll Score](https://www.bithound.io/github/kawamanza/dataguise/badges/score.svg)](https://www.bithound.io/github/kawamanza/dataguise)
