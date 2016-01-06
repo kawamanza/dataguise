@@ -24,7 +24,7 @@ Project badges:
 Usage
 =====
 
-NodeJS:
+NodeJS example:
 
 ```javascript
 // Formatting a number for better viewing
