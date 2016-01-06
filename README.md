@@ -30,9 +30,7 @@ NodeJS:
 // Formatting a number for better viewing
 var DataGuise = require("dataguise");
 var toCurrency = DataGuise.compile("#.##0,00", {"reverse": true});
-var balance = 1234567.89;
-var formattedBalance = toCurrency( String(balance) );
-console.log( formattedBalance );
+console.log( toCurrency("1234567.89") );
 // #=> 1.234.567,89
 ```
 
